@@ -2,6 +2,9 @@
 
 sudo apt-get update
 
+## INSTALL VIM
+sudo apt-get install vim
+
 ## INSTALL GIT
 sudo apt-get install git
 
