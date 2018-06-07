@@ -52,5 +52,17 @@ else
 	rm google-cloud-sdk-204.0.0-linux-x86_64.tar.gz
 	./google-cloud-sdk/install.sh 
 fi
+## INSTALL KUBECTL
+if [ -f "$(which kubectl)" ]; then
+	kubectl version
+else 
+	sudo apt-get install -y apt-transport-https
+	sudo curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+    cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
+deb http://apt.kubernetes.io/ kubernetes-xenial main
+EOF
+	sudo apt-get update
+	sudo apt-get install -y kubectl
+fi
 
 bash
