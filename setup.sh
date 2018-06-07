@@ -3,8 +3,7 @@
 sudo apt-get update
 
 ## INSTALL PYTHON 2.7
-pythonFile="which python"
-if [ -f "$(eval $pythonFile)" ]; then
+if [ -f "$(which python)" ]; then
 	python -V
 else
 	echo "INSTALLING PYTHON"
@@ -12,24 +11,20 @@ else
 	python -V
 fi 
 ## INSTALL VIM
-fileVim="which vim"
-if [ -f "$(eval $pythonFile)" ]; then
+if [ -f "$(which vim)" ]; then
 	echo "VIM INSTALLED"
 else
 	sudo apt-get install -y vim
 fi
 
 ## INSTALL GIT
-fileGit="which git"
-if [ -f "$(eval $fileGit)" ]; then 
+if [ -f "$(which git)" ]; then 
 	git --version
 else
 	sudo apt-get install -y git
 fi
-
 ## INSTALL DOCKER
-fileDocker="which docker"
-if [ -f "$(eval $fileDocker)" ]; then 
+if [ -f "$(which docker)" ]; then 
 	docker -v
 else
 	sudo apt install -y docker.io
@@ -49,12 +44,13 @@ if [ -f "$PWD/terraform" ]; then
 	echo "export PATH=$PATH:~/$PWD">>~/.bashrc
 fi
 ## INSTALL GCP SDK
-fileGcloud="which gcloud"
-if [ -f "$(eval $fileGcloud)" ]; then
+if [ -f "$(which gcloud)" ]; then
 	gcloud --version
 else
 	wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-204.0.0-linux-x86_64.tar.gz
 	tar -xvf google-cloud-sdk-204.0.0-linux-x86_64.tar.gz
-	./google-cloud-sdk/install.sh
+	rm google-cloud-sdk-204.0.0-linux-x86_64.tar.gz
+	./google-cloud-sdk/install.sh 
 fi
 
+bash
